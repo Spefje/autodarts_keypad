@@ -1,3 +1,2 @@
 include:
   - board: nrf52840dongle/nrf52840/zmk
-    shield: macro12

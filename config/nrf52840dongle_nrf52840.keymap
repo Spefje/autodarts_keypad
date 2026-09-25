@@ -1,0 +1,40 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    kscan0: kscan_0 {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+        diode-direction = "none";
+
+        row-gpios
+            = <&gpio0 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* P0.13 - Rad 1 */
+            , <&gpio0 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* P0.15 - Rad 2 */
+            , <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* P0.17 - Rad 3 */
+            , <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* P0.20 - Rad 4 */
+            ;
+
+        col-gpios
+            = <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* P0.22 - Kolumn 1 */
+            , <&gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* P0.24 - Kolumn 2 */
+            , <&gpio1  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>  /* P1.00 - Kolumn 3 */
+            ;
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+                &kp KP_N7    &kp KP_N8    &kp KP_N9
+                &kp KP_N4    &kp KP_N5    &kp KP_N6
+                &kp KP_N1    &kp KP_N2    &kp KP_N3
+                &kp ESC      &kp KP_N0    &kp ENTER
+            >;
+        };
+    };
+};

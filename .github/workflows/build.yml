@@ -5,6 +5,8 @@ on:
     paths:
       - ".github/workflows/**"
       - "config/**"
+      - "build.yaml"
+  workflow_dispatch:
 
 jobs:
   build:
